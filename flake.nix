@@ -52,7 +52,7 @@
       packages.bbham-zsh = with pkgs;
         stdenv.mkDerivation rec {
           version = "1.0.0";
-          name = "pwzsh";
+          name = "bbham-zsh";
           inherit system;
           src = self;
           buildInputs = [zsh] ++ dependencies;
@@ -72,7 +72,7 @@
             export zsh_completions="${pkgs.zsh-completions}"
             export starshipconfig="${./config/starship.toml}"
             substituteAll $src/config/zshrc $out/config/.zshrc
-            makeWrapper "${zsh}/bin/zsh" "$out/bin/pwzsh" --set SHELL_SESSIONS_DISABLE 1 --set ZDOTDIR "$out/config" --set PWZSH 1 --prefix PATH : "$out/bin:"${
+            makeWrapper "${zsh}/bin/zsh" "$out/bin/bbham-zsh" --set SHELL_SESSIONS_DISABLE 1 --set ZDOTDIR "$out/config" --set BBHAMZSH 1 --prefix PATH : "$out/bin:"${
               pkgs.lib.makeBinPath dependencies
             }
           '';
